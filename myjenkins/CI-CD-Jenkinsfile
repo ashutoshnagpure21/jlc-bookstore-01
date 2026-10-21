@@ -3,7 +3,7 @@ pipeline {
   
     tools {
       maven 'mymaven3'
-      jdk 'myjdk8'
+      jdk 'myjdk21'
     }
 
     stages {      
@@ -25,7 +25,7 @@ pipeline {
         stage('3. Build and Push docker image') {
            steps {
                script {         
-                 def customImage = docker.build('dandesclasses/myjlc-bookstore', "./mydocker")
+                 def customImage = docker.build('ashutoshnagpure21/jlc-bookstore-repo', "./mydocker")
                  docker.withRegistry('https://registry-1.docker.io/v2/', 'mydockerhub') {
                  customImage.push("5.2.0")
                  }                     
